@@ -1,12 +1,20 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+import { Form } from '@unform/web';
 
-// import { Container } from './styles';
+import Input from '../../components/Input';
 
 function SignUp() {
   return (
-    <div>
-      <h1>Sign Up</h1>
-    </div>
+    <>
+      <Form>
+        <Input name="name" type="text" placeholder="Seu nome" />
+        <Input name="email" type="email" placeholder="Seu e-mail" />
+        <Input name="password" type="password" placeholder="Sua senha" />
+        <button>Acessar</button>
+        <Link to="/">Já possuo conta</Link>
+      </Form>
+    </>
   );
 }
 
