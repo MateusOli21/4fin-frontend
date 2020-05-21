@@ -85,6 +85,7 @@ export const LoginContainer = styled.div`
       padding: 12px 8px;
       background: rgba(255, 255, 255, 0.1);
       border: 1px solid #f55656;
+      color: #fff;
 
       &::placeholder {
         color: #fff;
