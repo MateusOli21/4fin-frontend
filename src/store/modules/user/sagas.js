@@ -1,0 +1,23 @@
+import { all, call, put, takeLatest } from 'redux-saga/effects';
+
+import api from '../../../services/api';
+import { updateProfileSuccess, updateProfileRFailure } from './actions';
+
+export function* updateProfile({ payload }) {
+  try {
+    const { name, email, avatar_id, ...rest } = payload.data;
+
+    const profile = Object.assign(
+      { name, email, avatar_id },
+      rest.oldPassword ? rest : {}
+    );
+
+    const response = yield call(api.put, 'user', profile);
+
+    yield put(updateProfileSuccess(response.data));
+  } catch (err) {
+    yield put(updateProfileRFailure());
+  }
+}
+
+export default all([takeLatest('@user/UPDATE_PROFILE_REQUEST', updateProfile)]);
