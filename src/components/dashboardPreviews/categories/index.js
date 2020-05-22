@@ -1,9 +1,25 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+
+import api from '../../../services/api';
+import { formatter } from '../../../utils/priceFormatter';
 
 import { HeaderPreview, Categories, Category } from './styles';
 
 export default function CategoriesPreview({ isPurchasePage }) {
+  const [categories, setCategories] = useState([]);
+
+  useEffect(() => {
+    async function loadCategories() {
+      const response = await api.get('categories');
+      console.log(response.data);
+
+      setCategories(response.data);
+    }
+
+    loadCategories();
+  }, []);
+
   return (
     <>
       <HeaderPreview>
@@ -17,23 +33,15 @@ export default function CategoriesPreview({ isPurchasePage }) {
         )}
       </HeaderPreview>
       <Categories>
-        <Category>
-          <h3>Comidas</h3>
-          <h2>RS200,00</h2>
-          <span>editar</span>
-        </Category>
-
-        <Category>
-          <h3>Tecnologias</h3>
-          <h2>RS150,00</h2>
-          <span>editar</span>
-        </Category>
-
-        <Category>
-          <h3>Tecnologias</h3>
-          <h2>RS150,00</h2>
-          <span>editar</span>
-        </Category>
+        {categories.map((category) => (
+          <Category>
+            <h3>{category.name}</h3>
+            <h2>{formatter.format(category.max_value)}</h2>
+            <Link>
+              <span>editar</span>
+            </Link>
+          </Category>
+        ))}
       </Categories>
     </>
   );

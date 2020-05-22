@@ -53,5 +53,6 @@ export const Category = styled.div`
   }
 
   span {
+    color: #fff;
   }
 `;
