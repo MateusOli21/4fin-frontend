@@ -35,12 +35,21 @@ export const Purchases = styled.div`
 export const Purchase = styled.div`
   padding: 1.5rem 2rem;
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-end;
   text-align: center;
   color: #fff;
   background: #1e2454;
   border: 0;
   border-radius: 10px;
+
+  span {
+    color: #fff;
+  }
+`;
+
+export const Content = styled.div`
+  text-align: left;
 
   h3 {
     font-size: 1.25rem;
@@ -49,9 +58,10 @@ export const Purchase = styled.div`
   h2 {
     font-size: 1.75rem;
     padding: 0.5rem 0;
-    color: #19e389;
+    color: #f55656;
   }
 
   span {
+    font-size: 0.8rem;
   }
 `;

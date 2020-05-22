@@ -34,10 +34,10 @@ export default function CategoriesPreview({ isPurchasePage }) {
       </HeaderPreview>
       <Categories>
         {categories.map((category) => (
-          <Category>
-            <h3>{category.name}</h3>
+          <Category key={category.id}>
+            <h3>{category.name.toUpperCase()}</h3>
             <h2>{formatter.format(category.max_value)}</h2>
-            <Link>
+            <Link to="/update_category">
               <span>editar</span>
             </Link>
           </Category>
