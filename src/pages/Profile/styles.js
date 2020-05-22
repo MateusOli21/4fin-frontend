@@ -4,17 +4,16 @@ import { darken } from 'polished';
 export const Teste = styled.div``;
 
 export const Container = styled.div`
-  border: 1px solid red;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 4rem;
+  padding-top: 2.5rem;
   color: #fff;
 
   form {
     width: 100%;
     max-width: 540px;
-    padding: 1.5rem 2rem;
+    padding: 1rem 2rem;
     text-align: center;
 
     hr {

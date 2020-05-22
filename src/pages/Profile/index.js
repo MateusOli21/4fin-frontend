@@ -14,13 +14,11 @@ function Profile() {
   const dispatch = useDispatch();
 
   function handleSubmit(data) {
-    //console.log(data);
     dispatch(updateProfileRequest(data));
   }
 
   return (
     <Container>
-      <h1>Seu Perfil</h1>
       <Form initialData={profile} onSubmit={handleSubmit}>
         <AvatarInpunt name="avatar_id" />
         <Teste>
