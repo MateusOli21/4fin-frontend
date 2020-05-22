@@ -7,7 +7,7 @@ import { updateProfileRequest } from '../../store/modules/user/actions';
 import Input from '../../components/Input';
 import AvatarInpunt from '../../components/AvatarInput';
 
-import { Container, Teste } from './styles';
+import { Container } from './styles';
 
 function Profile() {
   const profile = useSelector((state) => state.user.profile);
@@ -21,20 +21,20 @@ function Profile() {
     <Container>
       <Form initialData={profile} onSubmit={handleSubmit}>
         <AvatarInpunt name="avatar_id" />
-        <Teste>
-          <Input name="name" type="text" placeholder="Seu nome" />
-          <Input name="email" type="email" placeholder="Seu e-mail" />
 
-          <hr />
+        <Input name="name" type="text" placeholder="Seu nome" />
+        <Input name="email" type="email" placeholder="Seu e-mail" />
 
-          <Input name="password" type="password" placeholder="Senha atual" />
-          <Input name="newPassword" type="password" placeholder="Nova senha" />
-          <Input
-            name="confirmPassword"
-            type="password"
-            placeholder="Confirme nova senha"
-          />
-        </Teste>
+        <hr />
+
+        <Input name="password" type="password" placeholder="Senha atual" />
+        <Input name="newPassword" type="password" placeholder="Nova senha" />
+        <Input
+          name="confirmPassword"
+          type="password"
+          placeholder="Confirme nova senha"
+        />
+
         <button type="submit">Confirmar alterações</button>
         <button type="submit">Voltar</button>
       </Form>

@@ -4,15 +4,14 @@ import { Link } from 'react-router-dom';
 import api from '../../../services/api';
 import { formatter } from '../../../utils/priceFormatter';
 
-import { HeaderPreview, Categories, Category } from './styles';
+import { HeaderPreview, Categories, Category, SeeMoreOpt } from './styles';
 
-export default function CategoriesPreview({ isPurchasePage }) {
+export default function CategoriesPreview({ isCategoriesPage }) {
   const [categories, setCategories] = useState([]);
 
   useEffect(() => {
     async function loadCategories() {
       const response = await api.get('categories');
-      console.log(response.data);
 
       setCategories(response.data);
     }
@@ -24,13 +23,10 @@ export default function CategoriesPreview({ isPurchasePage }) {
     <>
       <HeaderPreview>
         <h1>Categorias</h1>
-        {isPurchasePage === false ? (
-          <></>
-        ) : (
-          <Link to="/categories">
-            <span>ver mais</span>
-          </Link>
-        )}
+
+        <Link to="/create_category">
+          <span>Adicionar</span>
+        </Link>
       </HeaderPreview>
       <Categories>
         {categories.map((category) => (
@@ -43,6 +39,16 @@ export default function CategoriesPreview({ isPurchasePage }) {
           </Category>
         ))}
       </Categories>
+
+      {isCategoriesPage === false ? (
+        <></>
+      ) : (
+        <SeeMoreOpt>
+          <Link to="/categories">
+            <span>Ver mais</span>
+          </Link>
+        </SeeMoreOpt>
+      )}
     </>
   );
 }

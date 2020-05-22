@@ -15,9 +15,26 @@ export const HeaderPreview = styled.div`
     color: #19a389;
     font-size: 1rem;
     font-weight: 700;
+    background: transparent;
     border: 1px solid #19a389;
     border-radius: 5px;
     padding: 5px 10px;
+    margin-left: 12px;
+
+    &:hover {
+      color: ${darken(0.04, '#19a389')};
+    }
+  }
+`;
+
+export const SeeMoreOpt = styled.div`
+  display: flex;
+  justify-content: flex-end;
+
+  span {
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 700;
 
     &:hover {
       color: ${darken(0.04, '#19a389')};

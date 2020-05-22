@@ -5,21 +5,18 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 2.5rem;
+  padding-top: 3rem;
   color: #fff;
+
+  h1 {
+    font-size: 1.5rem;
+  }
 
   form {
     width: 100%;
     max-width: 540px;
-    padding: 1rem 2rem;
+    padding: 1.5rem 2rem;
     text-align: center;
-
-    hr {
-      border: 0;
-      height: 1px;
-      background: rgba(255, 255, 255, 0.2);
-      margin: 1.25rem 0;
-    }
 
     input {
       width: 100%;
@@ -58,6 +55,12 @@ export const Container = styled.div`
           background: ${darken(0.05, '#f55656')};
         }
       }
+    }
+  }
+
+  @media (min-width: 720px) {
+    h1 {
+      font-size: 2.25rem;
     }
   }
 `;

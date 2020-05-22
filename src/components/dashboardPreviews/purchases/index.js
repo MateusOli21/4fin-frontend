@@ -6,7 +6,13 @@ import pt from 'date-fns/locale/pt';
 import api from '../../../services/api';
 import { formatter } from '../../../utils/priceFormatter';
 
-import { HeaderPreview, Purchases, Purchase, Content } from './styles';
+import {
+  HeaderPreview,
+  Purchases,
+  Purchase,
+  Content,
+  SeeMoreOpt,
+} from './styles';
 
 export default function PurchasesPreview({ isPurchasePage }) {
   const [purchases, setPurchases] = useState([]);
@@ -15,7 +21,6 @@ export default function PurchasesPreview({ isPurchasePage }) {
     async function loadPurchases() {
       const response = await api.get('purchases');
       setPurchases(response.data);
-      console.log(response.data);
     }
 
     loadPurchases();
@@ -25,13 +30,9 @@ export default function PurchasesPreview({ isPurchasePage }) {
     <>
       <HeaderPreview>
         <h1>Compras</h1>
-        {isPurchasePage === false ? (
-          <></>
-        ) : (
-          <Link to="/purchases">
-            <span>ver mais</span>
-          </Link>
-        )}
+        <Link to="/create_purchase">
+          <span>Adicionar</span>
+        </Link>
       </HeaderPreview>
 
       <Purchases>
@@ -50,6 +51,15 @@ export default function PurchasesPreview({ isPurchasePage }) {
           </Purchase>
         ))}
       </Purchases>
+      {isPurchasePage === false ? (
+        <></>
+      ) : (
+        <SeeMoreOpt>
+          <Link to="/purchases">
+            <span>Ver mais</span>
+          </Link>
+        </SeeMoreOpt>
+      )}
     </>
   );
 }

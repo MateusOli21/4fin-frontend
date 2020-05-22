@@ -5,7 +5,7 @@ import CategoriesPreview from '../../components/dashboardPreviews/categories';
 function Categories() {
   return (
     <>
-      <CategoriesPreview isPurchasePage={false} />
+      <CategoriesPreview isCategoriesPage={false} />
     </>
   );
 }

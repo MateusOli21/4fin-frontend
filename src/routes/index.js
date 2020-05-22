@@ -9,16 +9,20 @@ import Dashboard from '../pages/Dashboard';
 import Profile from '../pages/Profile';
 import Categories from '../pages/Categories';
 import Purchases from '../pages/Purchases';
+import CreateCategory from '../pages/CreateCategory';
+import CreatePurchase from '../pages/CreatePurchase';
 
 export default function Routes() {
   return (
     <Switch>
       <Route exact path="/" component={SignIn} />
-      <Route exact path="/register" component={SignUp} />
-      <Route exact path="/dashboard" component={Dashboard} isPrivate />
-      <Route exact path="/profile" component={Profile} isPrivate />
-      <Route exact path="/categories" component={Categories} isPrivate />
-      <Route exact path="/purchases" component={Purchases} isPrivate />
+      <Route path="/register" component={SignUp} />
+      <Route path="/dashboard" component={Dashboard} isPrivate />
+      <Route path="/profile" component={Profile} isPrivate />
+      <Route path="/categories" component={Categories} isPrivate />
+      <Route path="/create_category" component={CreateCategory} isPrivate />
+      <Route path="/purchases" component={Purchases} isPrivate />
+      <Route path="/create_purchase" component={CreatePurchase} isPrivate />
     </Switch>
   );
 }

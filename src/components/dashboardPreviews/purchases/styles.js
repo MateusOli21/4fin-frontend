@@ -25,6 +25,22 @@ export const HeaderPreview = styled.div`
   }
 `;
 
+export const SeeMoreOpt = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 3rem;
+
+  span {
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 700;
+
+    &:hover {
+      color: ${darken(0.04, '#19a389')};
+    }
+  }
+`;
+
 export const Purchases = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
