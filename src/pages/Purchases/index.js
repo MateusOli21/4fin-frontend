@@ -1,12 +1,12 @@
 import React from 'react';
 
-// import { Container } from './styles';
+import PurchasesPreview from '../../components/dashboardPreviews/purchases';
 
 function Purchases() {
   return (
-    <div>
-      <h1>Purchases</h1>
-    </div>
+    <>
+      <PurchasesPreview isPurchasePage={false} />
+    </>
   );
 }
 

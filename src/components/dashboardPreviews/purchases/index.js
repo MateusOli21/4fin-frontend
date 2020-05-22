@@ -3,14 +3,18 @@ import { Link } from 'react-router-dom';
 
 import { HeaderPreview, Purchases, Purchase } from './styles';
 
-export default function PurchasesPreview() {
+export default function PurchasesPreview({ isPurchasePage }) {
   return (
     <>
       <HeaderPreview>
         <h1>Compras</h1>
-        <Link to="/purchases">
-          <span>ver mais</span>
-        </Link>
+        {isPurchasePage === false ? (
+          <></>
+        ) : (
+          <Link to="/purchases">
+            <span>ver mais</span>
+          </Link>
+        )}
       </HeaderPreview>
 
       <Purchases>
