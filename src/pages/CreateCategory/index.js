@@ -1,18 +1,21 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Form } from '@unform/web';
 import { toast } from 'react-toastify';
 
-import api from '../../services/api';
+import { postCategoriesRequest } from '../../store/modules/categories/actions';
+
 import Input from '../../components/Input';
 
 import { Container } from './styles';
 
 export default function UpdateCaregory() {
-  async function handleSubmit({ name, max_value }) {
+  const dispatch = useDispatch();
+
+  async function handleSubmit(data) {
     try {
-      await api.post('categories', { name, max_value });
-      toast.success('Categoria criada com sucesso');
+      dispatch(postCategoriesRequest(data));
     } catch (err) {
       toast.error('Erro ao criar categoria.');
     }

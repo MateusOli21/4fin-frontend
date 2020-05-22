@@ -1,23 +1,23 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-import api from '../../../services/api';
+import { getCategoriesRequest } from '../../../store/modules/categories/actions';
 import { formatter } from '../../../utils/priceFormatter';
 
 import { HeaderPreview, Categories, Category, SeeMoreOpt } from './styles';
 
 export default function CategoriesPreview({ isCategoriesPage }) {
-  const [categories, setCategories] = useState([]);
+  const dispatch = useDispatch();
+  const categories = useSelector((state) => state.categories.categories);
 
   useEffect(() => {
     async function loadCategories() {
-      const response = await api.get('categories');
-
-      setCategories(response.data);
+      dispatch(getCategoriesRequest());
     }
 
     loadCategories();
-  }, []);
+  }, [categories, dispatch]);
 
   return (
     <>
