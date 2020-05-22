@@ -1,21 +1,24 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+
+import CategoriesPreview from '../../components/dashboardPreviews/categories';
+import PurchasesPreview from '../../components/dashboardPreviews/purchases';
+
+import { Container, Overview, Content } from './styles';
 
 function Dashboard() {
-  const profile = useSelector((state) => state.user.profile);
-  const token = useSelector((state) => state.auth.token);
-
   return (
-    <div>
-      <h1>Dashboard</h1>
-      <button
-        onClick={() => {
-          console.log(profile, token);
-        }}
-      >
-        clicar
-      </button>
-    </div>
+    <Container>
+      <Overview>
+        <h1>Visão geral</h1>
+        <Content>
+          <h2>Limite de gastos: R$1.500,00</h2>
+          <h2>Saldo disponível: R$1.265,00</h2>
+          <h2>Total de gastos: R$335,00</h2>
+        </Content>
+      </Overview>
+      <CategoriesPreview />
+      <PurchasesPreview />
+    </Container>
   );
 }
 
