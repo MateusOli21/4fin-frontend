@@ -11,6 +11,7 @@ import Categories from '../pages/Categories';
 import Purchases from '../pages/Purchases';
 import CreateCategory from '../pages/CreateCategory';
 import CreatePurchase from '../pages/CreatePurchase';
+import EditCategory from '../pages/EditCategory';
 
 export default function Routes() {
   return (
@@ -23,6 +24,7 @@ export default function Routes() {
       <Route path="/create_category" component={CreateCategory} isPrivate />
       <Route path="/purchases" component={Purchases} isPrivate />
       <Route path="/create_purchase" component={CreatePurchase} isPrivate />
+      <Route path="/category/:id" component={EditCategory} isPrivate />
     </Switch>
   );
 }

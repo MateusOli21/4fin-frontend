@@ -17,7 +17,7 @@ export default function CategoriesPreview({ isCategoriesPage }) {
     }
 
     loadCategories();
-  }, [categories, dispatch]);
+  }, [dispatch]);
 
   return (
     <>
@@ -33,7 +33,7 @@ export default function CategoriesPreview({ isCategoriesPage }) {
           <Category key={category.id}>
             <h3>{category.name.toUpperCase()}</h3>
             <h2>{formatter.format(category.max_value)}</h2>
-            <Link to="/update_category">
+            <Link to={`/category/${category.id}`}>
               <span>editar</span>
             </Link>
           </Category>

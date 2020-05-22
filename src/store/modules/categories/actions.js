@@ -18,6 +18,20 @@ export function postCategoriesRequest(data) {
   };
 }
 
+export function updateCategoryRequest(data) {
+  return {
+    type: '@categories/PUT_CATEGORY_REQUEST',
+    payload: { data },
+  };
+}
+
+export function deleteCategoryRequest(data) {
+  return {
+    type: '@categories/DELETE_CATEGORY_REQUEST',
+    payload: { data },
+  };
+}
+
 export function categoriesFailure() {
   return {
     type: '@categories/CATEGORIES_FAILURE',

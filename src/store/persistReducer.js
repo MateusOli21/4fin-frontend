@@ -6,7 +6,7 @@ export default (reducers) => {
     {
       key: '4finapp',
       storage,
-      whitelist: ['auth', 'user'],
+      whitelist: ['auth', 'user', 'categories'],
     },
     reducers
   );
