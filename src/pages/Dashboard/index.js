@@ -16,8 +16,8 @@ function Dashboard() {
           <h2>Total de gastos: R$335,00</h2>
         </Content>
       </Overview>
-      <CategoriesPreview />
-      <PurchasesPreview />
+      <CategoriesPreview isHomePage={true} />
+      <PurchasesPreview isHomePage={true} />
     </Container>
   );
 }

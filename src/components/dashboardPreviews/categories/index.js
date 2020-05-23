@@ -6,8 +6,12 @@ import { formatter } from '../../../utils/priceFormatter';
 
 import { HeaderPreview, Categories, Category, SeeMoreOpt } from './styles';
 
-export default function CategoriesPreview({ isCategoriesPage }) {
-  const categories = useSelector((state) => state.user.categories);
+export default function CategoriesPreview({ isHomePage }) {
+  var categories = useSelector((state) => state.user.categories);
+
+  if (isHomePage) {
+    categories = categories.slice(0, 4);
+  }
 
   return (
     <>
@@ -30,14 +34,14 @@ export default function CategoriesPreview({ isCategoriesPage }) {
         ))}
       </Categories>
 
-      {isCategoriesPage === false ? (
-        <></>
-      ) : (
+      {isHomePage === true ? (
         <SeeMoreOpt>
           <Link to="/categories">
             <span>Ver mais</span>
           </Link>
         </SeeMoreOpt>
+      ) : (
+        <></>
       )}
     </>
   );

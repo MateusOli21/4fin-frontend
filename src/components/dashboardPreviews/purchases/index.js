@@ -14,8 +14,12 @@ import {
   SeeMoreOpt,
 } from './styles';
 
-export default function PurchasesPreview({ isPurchasePage }) {
-  const userPurchases = useSelector((state) => state.user.purchases);
+export default function PurchasesPreview({ isHomePage }) {
+  var purchases = useSelector((state) => state.user.purchases);
+
+  if (isHomePage) {
+    purchases = purchases.slice(0, 4);
+  }
 
   return (
     <>
@@ -28,7 +32,7 @@ export default function PurchasesPreview({ isPurchasePage }) {
       </HeaderPreview>
 
       <Purchases>
-        {userPurchases.map((purchase) => (
+        {purchases.map((purchase) => (
           <Purchase key={purchase.id}>
             <Content>
               <h3>{purchase.name.toUpperCase()}</h3>
@@ -43,14 +47,14 @@ export default function PurchasesPreview({ isPurchasePage }) {
           </Purchase>
         ))}
       </Purchases>
-      {isPurchasePage === false ? (
-        <></>
-      ) : (
+      {isHomePage === true ? (
         <SeeMoreOpt>
           <Link to="/purchases">
             <span>Ver mais</span>
           </Link>
         </SeeMoreOpt>
+      ) : (
+        <></>
       )}
     </>
   );
