@@ -20,9 +20,44 @@ export default function user(state = INITIAL_STATE, action) {
         draft.profile = action.payload.profile;
       });
 
-    case '@user/CATEGORY_SUCCESS':
+    case '@user/CREATE_CATEGORY_SUCCESS':
       return produce(state, (draft) => {
-        draft.categories = action.payload.categories;
+        draft.categories.push(action.payload.category);
+      });
+
+    case '@user/UPDATE_CATEGORY_SUCCESS':
+      return produce(state, (draft) => {
+        const categoryIndex = draft.categories.findIndex(
+          (category) => category.id === parseInt(action.payload.category.id)
+        );
+
+        if (categoryIndex >= 0) {
+          const {
+            id: idString,
+            name,
+            max_value: maxValueString,
+          } = action.payload.category;
+          const id = parseInt(idString);
+          const max_value = parseInt(maxValueString);
+
+          const category = { id, name, max_value };
+          draft.categories[categoryIndex] = category;
+        } else {
+          return state;
+        }
+      });
+
+    case '@user/DELETE_CATEGORY_SUCCESS':
+      return produce(state, (draft) => {
+        const categoryIndex = draft.categories.findIndex(
+          (category) => category.id === parseInt(action.payload.id)
+        );
+
+        if (categoryIndex >= 0) {
+          draft.categories.splice(categoryIndex, 1);
+        } else {
+          return state;
+        }
       });
 
     case '@auth/SIGN_OUT':

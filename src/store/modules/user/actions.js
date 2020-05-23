@@ -20,12 +20,23 @@ export function updateProfileRFailure() {
 
 // actions to Categories
 
+//create
+
 export function createCategoryRequest(data) {
   return {
     type: '@user/CREATE_CATEGORY_REQUEST',
     payload: { data },
   };
 }
+
+export function createCategorySuccess(category) {
+  return {
+    type: '@user/CREATE_CATEGORY_SUCCESS',
+    payload: { category },
+  };
+}
+
+//update
 
 export function updateCategoryRequest(data) {
   return {
@@ -34,16 +45,26 @@ export function updateCategoryRequest(data) {
   };
 }
 
+export function updateCategorySuccess(category) {
+  return {
+    type: '@user/UPDATE_CATEGORY_SUCCESS',
+    payload: { category },
+  };
+}
+
+//delete
+
 export function deleteCategoryRequest(data) {
   return {
     type: '@user/DELETE_CATEGORY_REQUEST',
     payload: { data },
   };
 }
-export function categorySuccess(categories) {
+
+export function deleteCategorySuccess(id) {
   return {
-    type: '@user/CATEGORY_SUCCESS',
-    payload: { categories },
+    type: '@user/DELETE_CATEGORY_SUCCESS',
+    payload: { id },
   };
 }
 
