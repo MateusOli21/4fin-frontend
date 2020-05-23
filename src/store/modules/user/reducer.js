@@ -60,6 +60,38 @@ export default function user(state = INITIAL_STATE, action) {
         }
       });
 
+    //purchase reducer
+    case '@user/CREATE_PURCHASE_SUCCESS':
+      return produce(state, (draft) => {
+        draft.purchases.push(action.payload.purchase);
+      });
+
+    case '@user/UPDATE_PURCHASE_SUCCESS':
+      return produce(state, (draft) => {
+        const purchaseIndex = draft.purchases.findIndex(
+          (purchase) => purchase.id === parseInt(action.payload.purchase.id)
+        );
+
+        if (purchaseIndex >= 0) {
+          draft.purchases[purchaseIndex] = action.payload.purchase;
+        } else {
+          return state;
+        }
+      });
+
+    case '@user/DELETE_PURCHASE_SUCCESS':
+      return produce(state, (draft) => {
+        const purchaseIndex = draft.purchases.findIndex(
+          (purchase) => purchase.id === parseInt(action.payload.id)
+        );
+
+        if (purchaseIndex >= 0) {
+          draft.purchases.splice(purchaseIndex, 1);
+        } else {
+          return state;
+        }
+      });
+
     case '@auth/SIGN_OUT':
       return produce(state, (draft) => {
         draft.profile = [];

@@ -79,5 +79,6 @@ export const Content = styled.div`
 
   span {
     font-size: 0.8rem;
+    margin-right: 5px;
   }
 `;

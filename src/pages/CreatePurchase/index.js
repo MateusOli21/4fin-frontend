@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Form } from '@unform/web';
 import { parseISO } from 'date-fns';
-import { toast } from 'react-toastify';
 
-import api from '../../services/api';
+import { createPurchaseRequest } from '../../store/modules/user/actions';
 
 import Input from '../../components/Input';
 import Select from '../../components/Select';
@@ -12,32 +12,31 @@ import Select from '../../components/Select';
 import { Container } from './styles';
 
 export default function CreatePurchase() {
-  const [categories, setCategories] = useState([]);
+  const categories = useSelector((state) => state.user.categories);
+  const dispatch = useDispatch();
+  const [select, setSelect] = useState([]);
 
   useEffect(() => {
-    async function loadCategories() {
-      const response = await api.get('categories');
+    const selectOptions = categories.map((category) => {
+      return {
+        value: category.id,
+        label: category.name,
+      };
+    });
 
-      const selectOptions = response.data.map((category) => {
-        return {
-          value: category.id,
-          label: category.name,
-        };
-      });
+    setSelect(selectOptions);
+  }, [categories]);
 
-      setCategories(selectOptions);
-    }
-    loadCategories();
-  }, []);
-
-  function handleSubmit({ name, value, date: dateToFormat, category_id }) {
-    try {
-      const date = parseISO(dateToFormat);
-      api.post('purchases', { name, value, date, category_id });
-      toast.success('Compra criada com sucesso');
-    } catch (err) {
-      toast.error('Erro ao criar nova compra.');
-    }
+  function handleSubmit({
+    name,
+    value: valueFormat,
+    date: dateToFormat,
+    category_id,
+  }) {
+    const date = parseISO(dateToFormat);
+    const value = parseInt(valueFormat);
+    const purchase = { name, value, date, category_id };
+    dispatch(createPurchaseRequest(purchase));
   }
 
   return (
@@ -49,7 +48,7 @@ export default function CreatePurchase() {
         <Input name="value" type="text" placeholder="Valor" />
         <Input name="date" type="date" placeholder="Data" />
 
-        <Select name="category_id" options={categories} />
+        <Select name="category_id" options={select} />
         <button type="submit">Criar compra</button>
         <Link to="/purchases">
           <button>Voltar</button>
