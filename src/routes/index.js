@@ -12,6 +12,7 @@ import Purchases from '../pages/Purchases';
 import CreateCategory from '../pages/CreateCategory';
 import CreatePurchase from '../pages/CreatePurchase';
 import EditCategory from '../pages/EditCategory';
+import EditPurchase from '../pages/EditPurchase';
 
 export default function Routes() {
   return (
@@ -21,10 +22,11 @@ export default function Routes() {
       <Route path="/dashboard" component={Dashboard} isPrivate />
       <Route path="/profile" component={Profile} isPrivate />
       <Route exact path="/categories" component={Categories} isPrivate />
-      <Route path="/create_category" component={CreateCategory} isPrivate />
       <Route exact path="/purchases" component={Purchases} isPrivate />
+      <Route path="/create_category" component={CreateCategory} isPrivate />
       <Route path="/create_purchase" component={CreatePurchase} isPrivate />
       <Route path="/categories/:id" component={EditCategory} isPrivate />
+      <Route path="/purchases/:id" component={EditPurchase} isPrivate />
     </Switch>
   );
 }
