@@ -7,10 +7,29 @@ import { formatter } from '../../../utils/priceFormatter';
 import { HeaderPreview, Categories, Category, SeeMoreOpt } from './styles';
 
 export default function CategoriesPreview({ isHomePage }) {
-  var categories = useSelector((state) => state.user.categories);
+  const categories = useSelector((state) => state.user.categories);
+  const purchases = useSelector((state) => state.user.purchases);
+
+  var categoriesTotal = categories.map((category) => {
+    const totalValue = purchases
+      .map((purchase) => {
+        if (purchase.category_id === category.id) {
+          return purchase.value;
+        }
+        return 0;
+      })
+      .reduce((prev, next) => prev + next);
+
+    return {
+      id: category.id,
+      name: category.name,
+      max_value: category.max_value,
+      total_spend: totalValue,
+    };
+  });
 
   if (isHomePage) {
-    categories = categories.slice(0, 4);
+    categoriesTotal = categoriesTotal.slice(0, 4);
   }
 
   return (
@@ -23,13 +42,12 @@ export default function CategoriesPreview({ isHomePage }) {
         </Link>
       </HeaderPreview>
       <Categories>
-        {categories.map((category) => (
+        {categoriesTotal.map((category) => (
           <Category key={category.id}>
             <h3>{category.name.toUpperCase()}</h3>
             <h2>{formatter.format(category.max_value)}</h2>
-            <Link to={`/categories/${category.id}`}>
-              <span>editar</span>
-            </Link>
+            <p>Total gasto: {formatter.format(category.total_spend)}</p>
+            <Link to={`/categories/${category.id}`}>Editar</Link>
           </Category>
         ))}
       </Categories>

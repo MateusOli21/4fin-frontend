@@ -69,7 +69,17 @@ export const Category = styled.div`
     color: #19e389;
   }
 
-  span {
+  p {
+    color: #f55656;
+    margin-bottom: 1rem;
+  }
+
+  a {
     color: #fff;
+    font-weight: 700;
+
+    &:hover {
+      color: #19e189;
+    }
   }
 `;
