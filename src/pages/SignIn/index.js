@@ -12,8 +12,6 @@ function SignIn() {
   const dispatch = useDispatch();
 
   function handleSubmit({ email, password }) {
-    console.log(email, password);
-
     if (email === '') {
       toast.error('Preencha o campo de e-mail.');
     }

@@ -27,7 +27,6 @@ export const Container = styled.div`
   align-items: center;
   padding-top: 3rem;
   color: #fff;
-  border: 1px solid red;
 
   h1 {
     font-size: 1.5rem;

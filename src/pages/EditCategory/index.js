@@ -6,13 +6,13 @@ import { Form } from '@unform/web';
 import {
   updateCategoryRequest,
   deleteCategoryRequest,
-} from '../../store/modules/categories/actions';
+} from '../../store/modules/user/actions';
 
 import Input from '../../components/Input';
 import { Container, Content } from './styles';
 
 export default function EditCategory() {
-  const categories = useSelector((state) => state.categories.categories);
+  const categories = useSelector((state) => state.user.categories);
   const { id } = useParams();
   const dispatch = useDispatch();
 

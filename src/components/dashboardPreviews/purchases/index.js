@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
+import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { format, parseISO } from 'date-fns';
 import pt from 'date-fns/locale/pt';
 
-import api from '../../../services/api';
 import { formatter } from '../../../utils/priceFormatter';
 
 import {
@@ -15,28 +15,20 @@ import {
 } from './styles';
 
 export default function PurchasesPreview({ isPurchasePage }) {
-  const [purchases, setPurchases] = useState([]);
-
-  useEffect(() => {
-    async function loadPurchases() {
-      const response = await api.get('purchases');
-      setPurchases(response.data);
-    }
-
-    loadPurchases();
-  }, []);
+  const userPurchases = useSelector((state) => state.user.purchases);
 
   return (
     <>
       <HeaderPreview>
         <h1>Compras</h1>
+
         <Link to="/create_purchase">
           <span>Adicionar</span>
         </Link>
       </HeaderPreview>
 
       <Purchases>
-        {purchases.map((purchase) => (
+        {userPurchases.map((purchase) => (
           <Purchase key={purchase.id}>
             <Content>
               <h3>{purchase.name.toUpperCase()}</h3>
@@ -45,7 +37,7 @@ export default function PurchasesPreview({ isPurchasePage }) {
                 {format(parseISO(purchase.date), 'PPPP', { locale: pt })}
               </span>
             </Content>
-            <Link to="/update_purchase">
+            <Link to={`/purchases/${purchase.id}`}>
               <span>editar</span>
             </Link>
           </Purchase>

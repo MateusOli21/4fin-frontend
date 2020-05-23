@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { Form } from '@unform/web';
 import { toast } from 'react-toastify';
 
-import { postCategoriesRequest } from '../../store/modules/categories/actions';
+import { createCategoryRequest } from '../../store/modules/user/actions';
 
 import Input from '../../components/Input';
 
@@ -15,7 +15,7 @@ export default function UpdateCaregory() {
 
   async function handleSubmit(data) {
     try {
-      dispatch(postCategoriesRequest(data));
+      dispatch(createCategoryRequest(data));
     } catch (err) {
       toast.error('Erro ao criar categoria.');
     }

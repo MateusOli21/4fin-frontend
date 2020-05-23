@@ -20,11 +20,11 @@ export default function Routes() {
       <Route path="/register" component={SignUp} />
       <Route path="/dashboard" component={Dashboard} isPrivate />
       <Route path="/profile" component={Profile} isPrivate />
-      <Route path="/categories" component={Categories} isPrivate />
+      <Route exact path="/categories" component={Categories} isPrivate />
       <Route path="/create_category" component={CreateCategory} isPrivate />
-      <Route path="/purchases" component={Purchases} isPrivate />
+      <Route exact path="/purchases" component={Purchases} isPrivate />
       <Route path="/create_purchase" component={CreatePurchase} isPrivate />
-      <Route path="/category/:id" component={EditCategory} isPrivate />
+      <Route path="/categories/:id" component={EditCategory} isPrivate />
     </Switch>
   );
 }
