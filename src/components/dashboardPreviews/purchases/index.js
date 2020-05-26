@@ -41,21 +41,21 @@ export default function PurchasesPreview({ isHomePage }) {
                 {format(parseISO(purchase.date), 'PPPP', { locale: pt })}
               </span>
             </Content>
-            <Link to={`/purchases/${purchase.id}`}>
-              <span>editar</span>
-            </Link>
+            <Link to={`/purchases/${purchase.id}`}>Editar</Link>
           </Purchase>
         ))}
       </Purchases>
-      {isHomePage === true ? (
-        <SeeMoreOpt>
+      <SeeMoreOpt>
+        {isHomePage === true ? (
           <Link to="/purchases">
             <span>Ver mais</span>
           </Link>
-        </SeeMoreOpt>
-      ) : (
-        <></>
-      )}
+        ) : (
+          <Link to="/dashboard">
+            <span>Voltar para o início</span>
+          </Link>
+        )}
+      </SeeMoreOpt>
     </>
   );
 }

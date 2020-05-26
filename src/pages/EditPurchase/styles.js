@@ -65,4 +65,16 @@ export const Content = styled.div`
       background: ${darken(0.05, '#f55656')};
     }
   }
+
+  a {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 0.75rem;
+    font-weight: 700;
+    color: #fff;
+
+    &:hover {
+      color: #19a389;
+    }
+  }
 `;

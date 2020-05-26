@@ -43,13 +43,13 @@ export const SeeMoreOpt = styled.div`
 
 export const Purchases = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(275px, 1fr));
   grid-gap: 1.25rem;
   padding: 1.75rem 0;
 `;
 
 export const Purchase = styled.div`
-  padding: 1.5rem 2rem;
+  padding: 1.5rem 1.4rem;
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
@@ -59,8 +59,13 @@ export const Purchase = styled.div`
   border: 0;
   border-radius: 10px;
 
-  span {
+  a {
     color: #fff;
+    font-weight: 700;
+
+    &:hover {
+      color: #f55656;
+    }
   }
 `;
 
@@ -78,7 +83,8 @@ export const Content = styled.div`
   }
 
   span {
-    font-size: 0.8rem;
-    margin-right: 5px;
+    color: #fff;
+    font-size: 0.75rem;
+    margin-right: 6px;
   }
 `;
