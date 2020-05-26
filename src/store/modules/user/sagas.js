@@ -88,11 +88,11 @@ export function* createPurchase({ payload }) {
     const { id, name, value, date, category_id } = response.data;
     yield put(createPurchaseSuccess({ id, name, value, date, category_id }));
 
-    toast.success('Categoria criada com sucesso');
+    toast.success('Compra criada com sucesso');
     history.push('/purchases');
   } catch (err) {
     yield put(categoriesFailure());
-    toast.error('Erro ao criar categorias.');
+    toast.error('Erro ao criar compra.');
   }
 }
 
@@ -108,11 +108,11 @@ export function* updatePurchase({ payload }) {
     yield put(updatePurchaseSuccess({ id, name, value, date, category_id }));
 
     console.log('3');
-    toast.success('Categoria atualizada com sucesso');
+    toast.success('Compra atualizada com sucesso');
     history.push('/purchases');
   } catch (err) {
     yield put(categoriesFailure());
-    toast.error('Erro ao atualizar categoria.');
+    toast.error('Erro ao atualizar compra.');
   }
 }
 
@@ -122,11 +122,11 @@ export function* deletePurchase({ payload }) {
     yield call(api.delete, `purchases/${idParams}`);
     yield put(deletePurchaseSuccess(idParams));
 
-    toast.success('Categoria excluida com sucesso');
+    toast.success('Compra excluida com sucesso');
     history.push('/purchases');
   } catch (err) {
     yield put(categoriesFailure());
-    toast.error('Erro ao excluir categoria.');
+    toast.error('Erro ao excluir compra.');
   }
 }
 
