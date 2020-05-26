@@ -5,7 +5,6 @@ import { Form } from '@unform/web';
 import { updateProfileRequest } from '../../store/modules/user/actions';
 
 import Input from '../../components/Input';
-import AvatarInpunt from '../../components/AvatarInput';
 
 import { Container } from './styles';
 
@@ -14,16 +13,39 @@ function Profile() {
   const dispatch = useDispatch();
 
   function handleSubmit(data) {
-    dispatch(updateProfileRequest(data));
+    const {
+      name,
+      email,
+      spend_limit: spendLimit,
+      password,
+      newPassword,
+      confirmPassword,
+    } = data;
+    const spend_limit = parseInt(spendLimit);
+
+    dispatch(
+      updateProfileRequest({
+        name,
+        email,
+        spend_limit,
+        password,
+        newPassword,
+        confirmPassword,
+      })
+    );
   }
 
   return (
     <Container>
       <Form initialData={profile} onSubmit={handleSubmit}>
-        <AvatarInpunt name="avatar_id" />
-
+        <label>Seu nome</label>
         <Input name="name" type="text" placeholder="Seu nome" />
+
+        <label>Seu e-mail</label>
         <Input name="email" type="email" placeholder="Seu e-mail" />
+
+        <label>Valor máximo de gastos</label>
+        <Input name="spend_limit" placeholder="Limite de gastos" />
 
         <hr />
 

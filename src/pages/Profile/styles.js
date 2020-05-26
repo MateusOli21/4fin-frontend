@@ -21,19 +21,27 @@ export const Container = styled.div`
       margin: 1.25rem 0;
     }
 
+    label {
+      color: rgba(255, 255, 255, 0.75);
+      text-align: left;
+      width: 100%;
+      display: flex;
+      margin-top: 0.85rem;
+    }
+
     input {
       width: 100%;
       display: block;
       border: 0;
       border-radius: 5px;
-      margin: 14px 0;
+      margin: 10px 0 16px;
       padding: 12px 8px;
       background: rgba(255, 255, 255, 0.1);
       border: 1px solid #f55656;
       color: #fff;
 
       &::placeholder {
-        color: #fff;
+        color: rgba(255, 255, 255, 0.75);
       }
     }
 

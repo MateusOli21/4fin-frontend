@@ -18,19 +18,21 @@ import {
 
 export function* updateProfile({ payload }) {
   try {
-    const { name, email, avatar_id, ...rest } = payload.data;
+    const { name, email, avatar_id, spend_limit, ...rest } = payload.data;
 
     const profile = Object.assign(
-      { name, email, avatar_id },
+      { name, email, avatar_id, spend_limit },
       rest.oldPassword ? rest : {}
     );
 
     const response = yield call(api.put, 'users', profile);
 
     yield put(updateProfileSuccess(response.data));
+    toast.success('Perfil atualizado com sucesso.');
+    history.push('/dashboard');
   } catch (err) {
-    toast.error('Erro ao atualizar perfil.');
     yield put(updateProfileRFailure());
+    toast.error('Erro ao atualizar perfil.');
   }
 }
 
