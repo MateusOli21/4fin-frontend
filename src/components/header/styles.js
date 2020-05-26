@@ -16,7 +16,7 @@ export const Container = styled.div`
 `;
 
 export const MenuOption = styled(Link)`
-  display: none;
+  display: ${(props) => (props.fixed ? 'inline' : 'none')};
   color: #fff;
 
   &:hover {

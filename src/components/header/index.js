@@ -32,7 +32,9 @@ export default function Header() {
             <MenuOption to="/purchases">Compras</MenuOption>
           </li>
           <li>
-            <MenuOption to="/profile">Perfil</MenuOption>
+            <MenuOption fixed to="/profile">
+              Perfil
+            </MenuOption>
           </li>
           <li>
             <button onClick={handleLogout}>Sair</button>
