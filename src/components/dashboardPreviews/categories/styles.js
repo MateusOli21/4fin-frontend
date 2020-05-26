@@ -49,16 +49,7 @@ export const Categories = styled.div`
   padding: 1.75rem 0;
 `;
 
-export const Category = styled.div`
-  padding: 1.5rem 2rem;
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-  color: #fff;
-  background: #1e2454;
-  border: 0;
-  border-radius: 10px;
-
+export const Content = styled.div`
   h3 {
     font-size: 1.25rem;
   }
@@ -70,9 +61,20 @@ export const Category = styled.div`
   }
 
   p {
-    color: #f55656;
-    margin-bottom: 1rem;
+    color: #fff;
   }
+`;
+
+export const Category = styled.div`
+  padding: 1.5rem 1.75rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  text-align: start;
+  color: #fff;
+  background: #1e2454;
+  border: 0;
+  border-radius: 10px;
 
   a {
     color: #fff;

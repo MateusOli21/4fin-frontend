@@ -6,6 +6,14 @@ export const Content = styled.div`
   width: 100%;
   padding: 1.5rem 2rem;
 
+  label {
+    width: 100%;
+    display: flex;
+    text-align: left;
+    color: rgba(255, 255, 255, 0.75);
+    margin-top: 1rem;
+  }
+
   button {
     width: 100%;
     padding: 12px 0;
@@ -17,6 +25,18 @@ export const Content = styled.div`
     background: #f55656;
     &:hover {
       background: ${darken(0.05, '#f55656')};
+    }
+  }
+
+  a {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 0.75rem;
+    font-weight: 700;
+    color: #fff;
+
+    &:hover {
+      color: #19a389;
     }
   }
 `;
@@ -40,7 +60,7 @@ export const Container = styled.div`
       display: block;
       border: 0;
       border-radius: 5px;
-      margin: 14px 0;
+      margin: 0.5rem 0 1.15rem;
       padding: 12px 8px;
       background: rgba(255, 255, 255, 0.1);
       border: 1px solid #f55656;

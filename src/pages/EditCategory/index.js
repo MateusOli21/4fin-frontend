@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import { Form } from '@unform/web';
 
 import {
@@ -36,7 +36,10 @@ export default function EditCategory() {
       <h1>Edite sua categoria</h1>
       <Content>
         <Form initialData={categoryInfo} onSubmit={handleSubmit}>
+          <label>Nome</label>
           <Input name="name" tyle="text" placeholder="Nome" />
+
+          <label>Valor</label>
           <Input
             name="max_value"
             tyle="text"
@@ -45,6 +48,7 @@ export default function EditCategory() {
           <button type="submit">Atualizar</button>
         </Form>
         <button onClick={handleDelete}>Excluir</button>
+        <Link to="/categories">Voltar</Link>
       </Content>
     </Container>
   );

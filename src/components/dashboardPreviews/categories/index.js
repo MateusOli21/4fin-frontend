@@ -4,7 +4,13 @@ import { Link } from 'react-router-dom';
 
 import { formatter } from '../../../utils/priceFormatter';
 
-import { HeaderPreview, Categories, Category, SeeMoreOpt } from './styles';
+import {
+  HeaderPreview,
+  Categories,
+  Category,
+  Content,
+  SeeMoreOpt,
+} from './styles';
 
 export default function CategoriesPreview({ isHomePage }) {
   const categories = useSelector((state) => state.user.categories);
@@ -44,23 +50,27 @@ export default function CategoriesPreview({ isHomePage }) {
       <Categories>
         {categoriesTotal.map((category) => (
           <Category key={category.id}>
-            <h3>{category.name.toUpperCase()}</h3>
-            <h2>{formatter.format(category.max_value)}</h2>
-            <p>Total gasto: {formatter.format(category.total_spend)}</p>
+            <Content>
+              <h3>{category.name.toUpperCase()}</h3>
+              <h2>{formatter.format(category.max_value)}</h2>
+              <p>Total gasto: {formatter.format(category.total_spend)}</p>
+            </Content>
             <Link to={`/categories/${category.id}`}>Editar</Link>
           </Category>
         ))}
       </Categories>
 
-      {isHomePage === true ? (
-        <SeeMoreOpt>
+      <SeeMoreOpt>
+        {isHomePage === true ? (
           <Link to="/categories">
             <span>Ver mais</span>
           </Link>
-        </SeeMoreOpt>
-      ) : (
-        <></>
-      )}
+        ) : (
+          <Link to="/dashboard">
+            <span>Voltar para o início</span>
+          </Link>
+        )}
+      </SeeMoreOpt>
     </>
   );
 }
