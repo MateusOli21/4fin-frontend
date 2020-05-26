@@ -20,7 +20,7 @@ export const Container = styled.div`
       display: block;
       border: 0;
       border-radius: 5px;
-      margin: 14px 0;
+      margin: 8px 0 16px;
       padding: 12px 8px;
       background: rgba(255, 255, 255, 0.1);
       border: 1px solid #f55656;
@@ -52,10 +52,18 @@ export const Content = styled.div`
   width: 100%;
   padding: 1.5rem 2rem;
 
+  label {
+    width: 100%;
+    display: flex;
+    text-align: left;
+    color: rgba(255, 255, 255, 0.75);
+    margin-top: 1rem;
+  }
+
   button {
     width: 100%;
     padding: 12px 0;
-    margin-bottom: 10px;
+    margin-top: 10px;
     font-weight: 700;
     border-radius: 5px;
     border: 0;

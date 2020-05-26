@@ -30,6 +30,7 @@ export const HeaderPreview = styled.div`
 export const SeeMoreOpt = styled.div`
   display: flex;
   justify-content: flex-end;
+  margin-bottom: 0.7rem;
 
   span {
     color: #fff;

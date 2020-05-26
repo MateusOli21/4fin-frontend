@@ -62,9 +62,15 @@ export default function EditPurchase() {
       <h1>Edite sua compra</h1>
       <Content>
         <Form initialData={purchase} onSubmit={handleSubmit}>
+          <label>Nome</label>
           <Input name="name" type="text" placeholder="Nome" />
+
+          <label>Valor</label>
           <Input name="value" placeholder="Valor " />
+
+          <label>Data</label>
           <Input name="date" type="date" placeholder="Data" />
+
           <Select name="category_id" options={select} />
 
           <button type="submit">Atualizar</button>
