@@ -100,14 +100,10 @@ export function* updatePurchase({ payload }) {
   try {
     const { id } = payload.data;
     const response = yield call(api.put, `purchases/${id}`, payload.data);
-
-    console.log('1');
-
     const { name, value, date, category_id } = response.data;
-    console.log('2');
+
     yield put(updatePurchaseSuccess({ id, name, value, date, category_id }));
 
-    console.log('3');
     toast.success('Compra atualizada com sucesso');
     history.push('/purchases');
   } catch (err) {
